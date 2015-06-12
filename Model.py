@@ -5,7 +5,7 @@ class estufa(db.Model):
 	local = db.Column(db.String(100))
 	meds = db.relationship('Measures')
 
-class Measure(db.Model):
+class measure(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	est_id = db.Column(db.Integer, db.ForeignKey('estufa.id'))
 	temp = db.Column(db.Float)
