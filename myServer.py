@@ -12,7 +12,9 @@ from Model import *
 def homepage():
 	return "Hello World!!<br><br>route [/]:<br><br>\t\
 	Outras rotas:<br>[<a href= \"http://0.0.0.0/medidas\">/medidas</a>]<br>\
-	[<a href= \"http://127.0.0.1:5000/medida/new\">/medida/new</a>]"
+	<br>[<a href= \"http://0.0.0.0/medida/new\">/medida/new</a>]<br>\
+	<br>[<a href= \"http://0.0.0.0/new_device\">/new_device</a>]<br>\
+	[<a href= \"http://0.0.0.0/check_device/default\">/check_device</a>]"
 
 @app.route('/exibeMedidas/', methods = ['GET'])
 def exibir():
