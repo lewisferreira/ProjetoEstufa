@@ -1,11 +1,12 @@
 from myServer import db
 
-class estufa(db.Model):
+class Estufa(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
+	nome = db.Column(db.String(100))
 	local = db.Column(db.String(100))
-	meds = db.relationship('Measures')
+	meds = db.relationship('Measure')
 
-class measure(db.Model):
+class Measure(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
 	est_id = db.Column(db.Integer, db.ForeignKey('estufa.id'))
 	temp = db.Column(db.Float)
