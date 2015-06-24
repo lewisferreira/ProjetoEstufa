@@ -19,7 +19,7 @@ def homepage():
 @app.route('/exibeMedidas/', methods = ['GET'])
 def exibir():
 	M = []
-	for i in measure.query.all():
+	for i in Measure.query.all():
 		M.append({'id': i.id, 'est_id': i.est_id, 'temp': i.temp, 'umi': i.umi})
 	return json.dumps(M)
 
