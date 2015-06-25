@@ -11,17 +11,27 @@ from Model import *
 @app.route('/')
 def homepage():
 	return "Hello World!!<br><br>route [/]:<br><br>\t\
-	Outras rotas:<br>[<a href= \"http://0.0.0.0/medidas\">/medidas</a>]<br>\
-	<br>[<a href= \"http://0.0.0.0/medida/new\">/medida/new</a>]<br>\
-	<br>[<a href= \"http://0.0.0.0/new_device\">/new_device</a>]<br>\
-	[<a href= \"http://0.0.0.0/check_device/default\">/check_device</a>]"
+	Outras rotas:<br>[<a href= \"http://0.0.0.0/medidas">/medidas</a>]<br>\
+	<br>[<a href= \"http://0.0.0.0/medida/new">/medida/new</a>]<br>\
+	<br>[<a href= \"http://0.0.0.0/new_device">/new_device</a>]<br>\
+	[<a href= \"http://0.0.0.0/check_device/default">/check_device</a>]"
 
-@app.route('/exibeMedidas/', methods = ['GET'])
-def exibir():
-	M = []
-	for i in Measure.query.all():
-		M.append({'id': i.id, 'est_id': i.est_id, 'temp': i.temp, 'umi': i.umi})
-	return json.dumps(M)
+@app.route('/medidas', methods = ['GET'])
+@app.route('/medidas/<nome>', methods = ['GET'])
+def exibir(nome = None):
+	if nome == None:
+		M = []
+		for i in Measure.query.all():
+			M.append({'id': i.id, 'est_id': i.est_id, 'temp': i.temp, 'umi': i.umi})
+		return json.dumps(M)
+	e = Estufa.query.filter_by(nome=nome).first()
+	if e is None:
+		return jsonify({'status': False, 'estufa': nome, 'comment': 'nao existe'})
+	else:
+		M = []
+		for i in Measure.query.filter_by(est_id = e.id):
+			M.append({'id': i.id, 'est_id': i.est_id, 'temp': i.temp, 'umi': i.umi})
+		return json.dumps(M)
 
 @app.route('/medida/new', methods = ['POST'])
 @app.route('/medida/new/<nome>', methods = ['POST'])
@@ -40,14 +50,14 @@ def new_measure(nome = 'default'):
 	db.session.commit()
 	return jsonify({'status': True})
 
-@app.route('check_device', methods = ['GET'])
+@app.route('/check_device', methods = ['GET'])
 def check_device(nome):
-	e  = Estufa.query.filtter_by(nome = nome).first()
+	e  = Estufa.query.filter_by(nome = nome).first()
 	if e is None:
 		return jsonify({'status': False})
 	return jsonify({'status': True, 'estufa': t.id, 'nome': t.nome, 'local':t.local})
 
-@app.route('new_device', methods = ['POST'])
+@app.route('/new_device', methods = ['POST'])
 def new_device():
 	if not request.json:
 		return jsonify({'status': False})
