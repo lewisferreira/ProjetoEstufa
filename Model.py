@@ -8,6 +8,6 @@ class Estufa(db.Model):
 
 class Measure(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	est_id = db.Column(db.Integer, db.ForeignKey('Estufa.id'))
+	est_id = db.Column(db.Integer, db.ForeignKey('estufa.id'))
 	temp = db.Column(db.Float)
 	umi = db.Column(db.Float)
