@@ -10,11 +10,11 @@ from Model import *
 
 @app.route('/')
 def homepage():
-	return "Hello World!!<br><br>route [/]:<br><br>\t\
-	Outras rotas:<br>[<a href= \"http://0.0.0.0/medidas">/medidas</a>]<br>\
-	<br>[<a href= \"http://0.0.0.0/medida/new">/medida/new</a>]<br>\
-	<br>[<a href= \"http://0.0.0.0/new_device">/new_device</a>]<br>\
-	[<a href= \"http://0.0.0.0/check_device/default">/check_device</a>]"
+	return '''Hello World!!<br><br>route [/]:<br><br>\t\
+	Outras rotas:<br>[<a href= \"http://localhost:5000/medidas">/medidas</a>]<br>\
+	<br>[<a href= \"http://localhost:5000/medida/new">/medida/new</a>]<br>\
+	<br>[<a href= \"http://localhost:5000/new_device">/new_device</a>]<br>\
+	[<a href= \"http://localhost:5000/check_device/default">/check_device</a>]"'''
 
 @app.route('/medidas', methods = ['GET'])
 @app.route('/medidas/<nome>', methods = ['GET'])
@@ -74,4 +74,4 @@ def new_device():
 	
 
 if __name__ == '__main__':
-	app.run(host = '0.0.0.0', host = 80, debug = True)
+	app.run(debug = True)

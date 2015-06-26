@@ -1,0 +1,18 @@
+Nota: 4.8
+Comentario: Faltou o device
+            Cuidado na hora de inventar demais. Voces erraram os parametros da
+			Flask.run() por besteira. Dei uma colher de chá e corrigi. Para
+			aquele texto do index, voce deveria ter usado tres aspas simples,
+			que é o jeito que o python trata multilinhas. Também corrigi, pois o
+			menu estava muito bom. E voces nunca devem colocar o ip nestes links
+			(0.0.0.0) nao existia na minha maquina.
+            Excelente setup de rotas
+			Excelente uso de filter()
+			Excelente uso de rotas dinamicas
+			Excelente tratamento de erros e situacoes adversas
+			Excelente pesquisa por maneiras diferentes de trabalar
+			Excelente trabalho distribuido usando o git.
+			Tenho tirado 1 ponto pela falta do device, mas como voces fizeram um
+			bom trabalho extra, adicionei 0.8 como bonus points. (nao fosse os
+			dois errinhos listados la em cima, que seria detectado com uma
+			execucao, seria 5.
